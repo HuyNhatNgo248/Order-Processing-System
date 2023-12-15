@@ -35,11 +35,7 @@ class Order < ApplicationRecord
   }
 
   def self.process_order(order:, threshold: 100)
-    if order.blank?
-      errors.add(:base, 'Order must exist to process')
-      Rails.logger.error('Order must exist to process')
-      return
-    end
+    return order unless order.processable?
 
     status = if (order.order_type == BUY && order.price < threshold) ||
                 (order.order_type == SELL && order.price > threshold)
@@ -49,5 +45,19 @@ class Order < ApplicationRecord
              end
 
     order.update(status:)
+  end
+
+  def processable?
+    return true if present? && status != CANCELED
+
+    if blank?
+      errors.add(:base, 'Order must exist to process')
+      Rails.logger.error('Order must exist to process')
+    else
+      errors.add(:base, "Order with id: #{id} is canceled")
+      Rails.logger.error("Order with id: #{id} is canceled")
+    end
+
+    false
   end
 end
