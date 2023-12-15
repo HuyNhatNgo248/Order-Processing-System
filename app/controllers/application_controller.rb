@@ -2,7 +2,6 @@
 
 # Controller responsible for rendering either success or failure response
 class ApplicationController < ActionController::API
-  include ApplicationHelper
 
   def render_success(data, status = :ok)
     render json: { success: true, data: }, status:

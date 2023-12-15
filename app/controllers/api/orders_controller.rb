@@ -34,7 +34,7 @@ module Api
     end
 
     def process_order
-      result = Orders::ProcessOrderService.call(order: @order)
+      result = Orders::ProcessOrderService.call(order: @order, threshold: params[:threshold])
 
       render_json(result)
     end

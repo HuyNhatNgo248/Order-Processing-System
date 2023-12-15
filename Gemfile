@@ -30,6 +30,7 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 gem 'dry-monads'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'

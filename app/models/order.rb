@@ -34,7 +34,7 @@ class Order < ApplicationRecord
     where(order_type: BUY, status: COMPLETED)
   }
 
-  def self.process_order(order:, threshold: 100)
+  def self.process_order(order:, threshold: ENV["DEFAULT_THRESHOLD"])
     return order unless order.processable?
 
     status = if (order.order_type == BUY && order.price < threshold) ||

@@ -7,11 +7,21 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-*
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore database config
+/config/database.yml
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
