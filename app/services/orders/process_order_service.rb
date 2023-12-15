@@ -16,10 +16,14 @@ module Orders
     attr_reader :order, :threshold
 
     def process_order
-      processed_order = Order.process_order(order: order, threshold: threshold)
+      processed_order = Order.process_order(order: order, threshold: validated_threshold)
       return Failure(error_msg: model_error(processed_order)) if processed_order.errors.any?
 
       Success(processed_order)
+    end
+
+    def validated_threshold
+      ENV.fetch('DEFAULT_THRESHOLD', nil) unless threshold.present? && numeric?(threshold.to_s)
     end
   end
 end

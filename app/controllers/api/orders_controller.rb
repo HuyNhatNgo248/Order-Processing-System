@@ -16,13 +16,13 @@ module Api
     end
 
     def create
-      result = Orders::CreateService.call(order_params:)
+      result = Orders::CreateService.call(order_params: order_params)
 
       render_json(result)
     end
 
     def update
-      result = Orders::UpdateService.call(order: @order, order_params:)
+      result = Orders::UpdateService.call(order: @order, order_params: order_params)
 
       render_json(result)
     end

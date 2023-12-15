@@ -4,9 +4,10 @@ require 'dry/monads'
 
 class BaseService
   include Dry::Monads[:result, :do]
+  include ApplicationHelper
 
-  def self.call(**args, &)
-    new(**args, &).call
+  def self.call(**args, &block)
+    new(**args, &block).call
   end
 
   protected
