@@ -1,0 +1,98 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  NewCops: enable
+
+  Exclude:
+    - "bin/**/*"
+    - "db/**/*"
+    - "coverage/**/*"
+    - "log/**/*"
+    - "public/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "storage/**/*"
+    - "spec/**/*"
+    - "config/**/*"
+
+Layout/LineLength:
+  Severity: warning
+  Max: 152
+
+Metrics/ParameterLists:
+  Max: 6
+
+Metrics/AbcSize:
+  Enabled: true
+  Exclude:
+    - "test/**/*"
+    - "**/test/**/*"
+
+Metrics/ClassLength:
+  Max: 200
+  Severity: warning
+  Exclude:
+    - "test/**/*"
+    - "**/test/**/*"
+
+Metrics/BlockLength:
+  Severity: warning
+  Max: 50
+  Exclude:
+    - "test/**/*"
+    - "**/test/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Severity: warning
+  Max: 40
+  Exclude:
+    - "test/**/*"
+    - "**/test/**/*"
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Lint/RaiseException:
+  Enabled: true
+  Severity: warning
+
+Lint/StructNewOverride:
+  Enabled: true
+  Severity: warning
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Exclude:
+    - "test/**/*"
+    - "**/test/**/*"
+
+Rails/SkipsModelValidations:
+  Enabled: true
+  Exclude:
+    - "test/**/*"
+    - "**/test/**/*"
+
+Rails/InverseOf:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
