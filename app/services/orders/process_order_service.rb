@@ -23,7 +23,9 @@ module Orders
     end
 
     def validated_threshold
-      ENV.fetch('DEFAULT_THRESHOLD', nil) unless threshold.present? && numeric?(threshold.to_s)
+      return ENV.fetch('DEFAULT_THRESHOLD', nil) unless threshold.present? && numeric?(threshold.to_s)
+
+      threshold
     end
   end
 end
