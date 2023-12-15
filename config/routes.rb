@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  namespace :api do
+  namespace :api, defaults: {format: :json} do
     resources :orders do
       member do
         patch 'process_order', to: "orders#process_order"
