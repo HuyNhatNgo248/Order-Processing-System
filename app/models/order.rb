@@ -27,8 +27,10 @@ class Order < ApplicationRecord
     CANCELED = 'canceled'
   ].freeze
 
-  validates :order_type, inclusion: { in: ORDER_TYPES }, if: :order_type_changed?
-  validates :status, inclusion: { in: STATUSES }, if: :status_changed?
+  validates :order_type, inclusion: { in: ORDER_TYPES }
+  validates :status, inclusion: { in: STATUSES }
+  validates :price, presence: true
+  validates :quantity, presence: true
 
   scope :completed_buy_orders, lambda {
     where(order_type: BUY, status: COMPLETED)

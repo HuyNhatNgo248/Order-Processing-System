@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       collection do
         get 'total_order_quantity', to: "orders#total_order_quantity"
+        get 'completed_buy_orders', to: "orders#completed_buy_orders"
       end
     end
   end

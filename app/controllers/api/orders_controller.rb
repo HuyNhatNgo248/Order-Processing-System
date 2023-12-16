@@ -45,6 +45,12 @@ module Api
       render_success({ total_quantity: result })
     end
 
+    def completed_buy_orders
+      result = Order.completed_buy_orders
+
+      render_success(result)
+    end
+
     private
 
     def set_order
