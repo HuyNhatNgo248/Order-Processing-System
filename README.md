@@ -16,6 +16,8 @@ This README provides information on setting up, configuring, and running the app
 
 This project is built using Ruby version 3.0.0.
 
+Please make sure you are using the correct ruby version to execute this program.
+
 ## System Dependencies
 
 This application relies on the following gems:
@@ -26,7 +28,10 @@ This application relies on the following gems:
 - [rubocop](https://github.com/rubocop/rubocop)
 - [rubocop-performance](https://github.com/rubocop/rubocop-performance)
 - [rubocop-rails](https://github.com/rubocop/rubocop-rails)
+- [rubocop-rspec](https://github.com/rubocop/rubocop-rspec)
 - [faker](https://github.com/faker-ruby/faker)
+- [rspec-rails](https://github.com/rspec/rspec-rails)
+- [factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails)
 
 Make sure to install these gems by running:
 
@@ -51,3 +56,9 @@ rails db:seed
 ```
 
 # Running the Test Suite
+
+To run the test suite using Rspec, run:
+
+```bash
+bundle exec rspec
+```
