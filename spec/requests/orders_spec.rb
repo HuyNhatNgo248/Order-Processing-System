@@ -136,7 +136,6 @@ module Api
       end
 
       context "process order" do
-        
         it "return success" do
           patch :process_order, params: { id: order_1.id, threshold: 200 }
           result = JSON.parse(response.body, symbolize_names: true)
@@ -157,6 +156,17 @@ module Api
       end
 
       context "get total order quantity" do
+        it "return success" do
+          get :total_order_quantity, params: { user_id: user.id }
+          result = JSON.parse(response.body, symbolize_names: true)
+
+          expect(response).to have_http_status(:success)
+          expect(result[:success]).to be true
+          expect(result[:data][:total_quantity]).to eq order_3.quantity + order_4.quantity
+        end
+      end
+
+      context "get completed buy orders" do
         it "return success" do
           get :completed_buy_orders
           result = JSON.parse(response.body, symbolize_names: true)
