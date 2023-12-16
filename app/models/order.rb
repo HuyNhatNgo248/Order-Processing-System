@@ -40,8 +40,6 @@ class Order < ApplicationRecord
     status = get_status(order, threshold)
 
     order.update(status: status)
-
-    order
   end
 
   def processable?

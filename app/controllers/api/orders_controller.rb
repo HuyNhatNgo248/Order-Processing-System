@@ -40,9 +40,9 @@ module Api
     end
 
     def total_order_quantity
-      order_quantity = Order.where(user: @user, status: Order::COMPLETED).count
+      result = Order.where(user: @user, status: Order::COMPLETED).sum(:quantity)
 
-      render_success({ total_quantity: order_quantity })
+      render_success({ total_quantity: result })
     end
 
     private

@@ -2,7 +2,7 @@
 
 module Orders
   class ProcessOrderService < BaseService
-    def initialize(order:, threshold:)
+    def initialize(order:, threshold: nil)
       @order = order
       @threshold = threshold
     end
@@ -16,10 +16,11 @@ module Orders
     attr_reader :order, :threshold
 
     def process_order
-      processed_order = Order.process_order(order: order, threshold: validated_threshold)
-      return Failure(error_msg: model_error(processed_order)) if processed_order.errors.any?
+      Order.process_order(order: order, threshold: validated_threshold)
 
-      Success(processed_order)
+      return Failure(error_msg: model_error(order)) if order.errors.any?
+
+      Success(order)
     end
 
     def validated_threshold
