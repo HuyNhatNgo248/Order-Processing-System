@@ -11,17 +11,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-one:
-  user: one
-  price: 9.99
-  quantity: 1
-  order_type: MyString
-  status: MyString
-
-two:
-  user: two
-  price: 9.99
-  quantity: 1
-  order_type: MyString
-  status: MyString
+FactoryBot.define do
+  factory :order do
+    association :user
+    price { Faker::Number.decimal(l_digits: 3) }
+    quantity { Faker::Number.number(digits: 2) }
+    order_type { [Order::BUY, Order::SELL].sample }
+    status { [Order::PENDING, Order::COMPLETED, Order::CANCELED].sample }
+  end
+end
